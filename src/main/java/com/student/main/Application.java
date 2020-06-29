@@ -28,7 +28,7 @@ public class Application {
 	@Bean
 	InitializingBean sendDatabase() {
 		return () -> {
-  String sql =" create table studentinfo (id int primary key, name varchar(20), department varchar(20), tutionfee int , birthdate date)";
+  String sql = "create table 'studentinfo' (id int primary key, name varchar(20), department varchar(20), tutionfee int , birthdate date)";
 			jdbcTemplate.update(sql);
 
 		service.saveStudent( new Student(1, "hasan", "english", 600,

@@ -2,6 +2,7 @@ package com.student.main;
 
 import com.student.main.Model.Student;
 import com.student.main.Service.Service;
+import com.student.main.helper.ExcelHelper;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -13,15 +14,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class Application {
 
 
-
-//	@Autowired
-//	Service service ;
-//	@Autowired
-//	JdbcTemplate jdbcTemplate;
-
-
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
+
+
 	}
 
 

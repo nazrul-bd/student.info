@@ -14,23 +14,21 @@ import java.util.List;
 @Repository
 public class ResultRepository  implements ResultService {
 
+
     @Autowired
     JdbcTemplate jdbcTemplate;
 
     @Override
-    public void  saveResult(MultipartFile file) {
+    public List<Result>  saveResult(MultipartFile file ) throws IOException {
 
-        List<Result> ResultList = null;
-        try {
-            ResultList = ExcelHelper.parseExcelFile(file.getInputStream());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        List<Result>     ResultList = ExcelHelper.parseExcelFile(file.getInputStream());
         String sql = "insert into resultdb(id, name, gpa,grade) values(?,?,?,?)";
 
-//        jdbcTemplate.update(sql, new Object[]{ResultList.getId(), ResultList.getName(), ResultList.getGpa(), ResultList.getGrade()});
 
+        jdbcTemplate.update(sql, new Object[]{ResultList.get(0).getId(), ResultList.get(0).getName(), ResultList.get(0).getGpa(), ResultList.get(0).getGrade()});
+
+
+        return  ResultList ;
 
     }
 }

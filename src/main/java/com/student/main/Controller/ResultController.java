@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,10 +27,25 @@ public class ResultController {
 ResultService resultService;
 
     @PostMapping("/result")
-    public void uploadMultipartFile(@RequestParam("uploadfile") MultipartFile file ) {
-            resultService.saveResult(file);
+    public String uploadMultipartFile(@RequestParam("file") MultipartFile file ) {
+
+
+        try {
+            List<Result>      rlist = resultService.saveResult(file);
+            System.out.println("xxxxx"+rlist.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+     return "file uploaded successfully";
 
     }
+
+
+
+
 
 }
 

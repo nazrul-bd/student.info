@@ -29,15 +29,12 @@ ResultService resultService;
     @PostMapping("/result")
     public String uploadMultipartFile(@RequestParam("file") MultipartFile file ) {
 
-
         try {
-            List<Result>      rlist = resultService.saveResult(file);
+            List<Result>      rlist = resultService.saveMultipleResult(file);
             System.out.println("xxxxx"+rlist.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
 
      return "file uploaded successfully";
 

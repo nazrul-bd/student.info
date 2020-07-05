@@ -11,7 +11,5 @@ import java.util.List;
 @Service
 public interface ResultService  {
 
-     public List<Result> saveResult (MultipartFile file) throws IOException;
-
-
+     public List<Result> saveMultipleResult (MultipartFile file) throws IOException;
 }

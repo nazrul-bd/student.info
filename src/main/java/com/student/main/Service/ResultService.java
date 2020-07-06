@@ -12,4 +12,9 @@ import java.util.List;
 public interface ResultService  {
 
      public List<Result> saveMultipleResult (MultipartFile file) throws IOException;
+
+     public List<Result> GetAllStudentResult();
+
+     public List<Result> GetOneStudentResult(int id);
+
 }

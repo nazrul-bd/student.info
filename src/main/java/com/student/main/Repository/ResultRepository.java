@@ -5,6 +5,7 @@ import com.student.main.Service.ResultService;
 import com.student.main.helper.ExcelHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,7 +17,6 @@ import java.util.List;
 
 @Repository
 public class ResultRepository  implements ResultService {
-
 
     @Autowired
     JdbcTemplate jdbcTemplate;
@@ -39,10 +39,26 @@ public class ResultRepository  implements ResultService {
                 return ResultList.size();
             }
         });
-
         return  ResultList;
     }
 
 
+    @Override
+    public List<Result> GetAllStudentResult() {
+        String sql = "SELECT * FROM resultdb";
+        List<Result> resultList = jdbcTemplate.query(sql,
+                BeanPropertyRowMapper.newInstance(Result.class));
+        return resultList;
+    }
+
+
+    @Override
+    public List<Result> GetOneStudentResult(int id) {
+        String sql = "SELECT * FROM resultdb WHERE id = ?";
+        Object[] args = {id};
+        List<Result> oneResult = jdbcTemplate.query(sql, args,
+                BeanPropertyRowMapper.newInstance(Result.class));
+        return oneResult;
+    }
 
 }

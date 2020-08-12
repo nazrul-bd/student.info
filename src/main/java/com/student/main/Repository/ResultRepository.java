@@ -1,5 +1,6 @@
 package com.student.main.Repository;
 
+import com.student.main.Model.Marksheet;
 import com.student.main.Model.Result;
 import com.student.main.Service.ResultService;
 import com.student.main.helper.ExcelHelper;
@@ -60,5 +61,18 @@ public class ResultRepository  implements ResultService {
                 BeanPropertyRowMapper.newInstance(Result.class));
         return oneResult;
     }
+
+
+
+
+
+    @Override
+    public List<Marksheet> GetAllStudentResultMarksheet() {
+        String sql = "SELECT * FROM marksheet";
+        List<Marksheet> marksheets = jdbcTemplate.query(sql,
+                BeanPropertyRowMapper.newInstance(Marksheet.class));
+        return marksheets;
+    }
+
 
 }

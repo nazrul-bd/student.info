@@ -1,5 +1,6 @@
 package com.student.main.Service;
 
+import com.student.main.Model.Marksheet;
 import com.student.main.Model.Result;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,5 +17,8 @@ public interface ResultService  {
      public List<Result> GetAllStudentResult();
 
      public List<Result> GetOneStudentResult(int id);
+
+     public List<Marksheet> GetAllStudentResultMarksheet();
+
 
 }

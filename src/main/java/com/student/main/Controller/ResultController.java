@@ -1,6 +1,7 @@
 package com.student.main.Controller;
 
 
+import com.student.main.Model.Marksheet;
 import com.student.main.Model.Result;
 import com.student.main.Service.ResultService;
 import com.student.main.helper.ShowPdfResult;
@@ -41,6 +42,7 @@ ResultService resultService;
     }
 
 
+
     @GetMapping(value = "/student/result", produces = MediaType.APPLICATION_PDF_VALUE)
     public ResponseEntity<InputStreamResource> ShowAllStudentResult() throws IOException {
         List<Result> resultList = (List<Result>) resultService.GetAllStudentResult();
@@ -71,6 +73,17 @@ ResultService resultService;
                 .contentType(MediaType.APPLICATION_PDF)
                 .body(new InputStreamResource(bis));
     }
+
+
+
+    @GetMapping(value = "/marksheet", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Marksheet> getStudentsMarksheet() {
+        List<Marksheet> marksheetList = resultService.GetAllStudentResultMarksheet();
+        return marksheetList;
+    }
+
+
+
 
 }
 
